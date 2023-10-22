@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Selector Aleatorio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: blue;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .selector {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+            text-align: center;
+        }
+
+        .item {
+            border: 1px solid blue;
+            padding: 10px;
+        }
+
+        button {
+            margin: 20px;
+        }
+
+        .selected {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="selector" id="selector-meses">
+            <button class="btn btn-success" onclick="seleccionarAleatorio('selector-meses')">Seleccionar Mes</button>
+
+            <div class="item">Enero</div>
+            <div class="item">Febrero</div>
+            <div class="item">Marzo</div>
+            <div class="item">Abril</div>
+            <div class="item">Mayo</div>
+            <div class="item">Junio</div>
+            <div class="item">Julio</div>
+            <div class="item">Agosto</div>
+            <div class="item">Septiembre</div>
+            <div class="item">Octubre</div>
+            <div class="item">Noviembre</div>
+            <div class="item">Diciembre</div>
+        </div>
+
+
+        <div class="selector" id="selector-categorias">
+            <button class="btn btn-success" onclick="seleccionarAleatorio('selector-categorias')">Espacio</button>
+
+            <div class="item">Arteterapia</div>
+            <div class="item">Dramaterapia</div>
+            <div class="item">Musicoterapia</div>
+            <div class="item">Danzaterapia</div>
+            <div class="item">Escultura</div>
+        </div>
+
+
+        <div class="selector" id="selector-nombres">
+            <button class="btn btn-success" onclick="seleccionarAleatorio('selector-nombres')">Seleccionar Participante</button>
+
+            <div class="item">Noelia</div>
+            <div class="item">Rodrigo</div>
+            <div class="item">Pedro</div>
+            <div class="item">Belen</div>
+            <div class="item">Francisco</div>
+        </div>
+
+    </div>
+
+    <script>
+        function seleccionarAleatorio(selectorId) {
+            const selector = document.getElementById(selectorId);
+            const casillas = selector.querySelectorAll(".item");
+
+            // Restaura el estilo de las casillas previamente seleccionadas
+            casillas.forEach(casilla => {
+                casilla.classList.remove("selected");
+            });
+
+            // Resalta el elemento aleatorio
+            const aleatorio = Math.floor(Math.random() * casillas.length);
+            casillas[aleatorio].classList.add("selected");
+        }
+    </script>
+</body>
+</html>
